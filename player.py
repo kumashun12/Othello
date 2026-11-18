@@ -2,7 +2,7 @@
 
 import field
 
-def piece(board, r, c, player):
+def piece(board, r, c, turn):
 
     #すでに駒がおかれているところにはおけないようにする
     if(board[r][c] != field.EMPTY):
@@ -10,12 +10,16 @@ def piece(board, r, c, player):
         return False
     else:
         #駒を置く
-        if field.is_adjacent(board, r, c):
+        if flips:
             print("駒を置きました")
-            board[r][c] = player
+            flips = field.get_flips(board, r, c, turn)
+            board[r][c] = turn
+            
+            for fr, fc in flips:
+                board[fr][fc] = turn
             return True
         else:
-            print("駒の隣においてください")
+            print("そこにはおけません")
             return False
 
 

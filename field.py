@@ -43,7 +43,7 @@ def print_board(board):
             print(STONE_MAP[board[r][c]], end=" ")
         print()
 
-
+#隣に駒がおいてるかどうかを調べている
 def is_adjacent(board, r, c):
     if board[r][c] != EMPTY:
         return False
@@ -56,3 +56,30 @@ def is_adjacent(board, r, c):
                 return True
 
     return False
+
+
+def get_flips(board, r, c, color):
+    flips = []
+    for dr, dc in DIRECTIONS:
+        row, col = r + dr, c + dc
+        candidate = []
+
+        while 0<=row<8 and 0<=col<8:
+            if board[row][col] == -color:
+                candidate.append((row, col))
+            elif board[row][col] == color:
+                flips.extend(candidate)
+                break
+            elif board[row][col] == EMPTY:
+                break
+
+            row += dr
+            col += dc
+
+    return flips
+
+
+        
+
+
+
