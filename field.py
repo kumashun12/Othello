@@ -1,4 +1,4 @@
-﻿
+﻿#field.py
 
 EMPTY = 0
 BLACK = 1
@@ -6,9 +6,20 @@ WHITE = -1
 
 STONE_MAP = {
         EMPTY: "*",
-        WHITE: "○",
-        BLACK: "●",
-    }
+        WHITE: "●",
+        BLACK: "○",
+}
+
+DIRECTIONS = [
+    (-1, -1),
+    (-1, 0),
+    (-1, 1),
+    (0, -1),
+    (0, 1),
+    (1, -1),
+    (1, 0),
+    (1, 1)
+]
 
 
 def create_board():
@@ -32,6 +43,16 @@ def print_board(board):
             print(STONE_MAP[board[r][c]], end=" ")
         print()
 
-board = create_board()
-print_board(board)
 
+def is_adjacent(board, r, c):
+    if board[r][c] != EMPTY:
+        return False
+
+    for dr, dc in DIRECTIONS:
+        row, col = r + dr, c + dc
+
+        if 0<=row<8 and 0<=col<8:
+            if board[row][col] != EMPTY:
+                return True
+
+    return False

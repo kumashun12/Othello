@@ -1,14 +1,22 @@
-﻿import field
+﻿#player.py
+
+import field
 
 def piece(board, r, c, player):
-    
+
     #すでに駒がおかれているところにはおけないようにする
     if(board[r][c] != field.EMPTY):
         print("そのマスには駒がおかれています")
+        return False
     else:
         #駒を置く
-        print("駒を置きました")
-        board[r][c] = player
+        if field.is_adjacent(board, r, c):
+            print("駒を置きました")
+            board[r][c] = player
+            return True
+        else:
+            print("駒の隣においてください")
+            return False
 
 
 def read_input():
@@ -26,10 +34,3 @@ def read_input():
 
         except ValueError:
             print("入力が不正です。もう一度入力してください")
-
-board = field.create_board()
-
-s = read_input()
-piece(board, s[0], s[1], field.BLACK)
-
-field.print_board(board)
