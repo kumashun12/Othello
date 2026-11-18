@@ -10,9 +10,9 @@ def piece(board, r, c, turn):
         return False
     else:
         #駒を置く
+        flips = field.get_flips(board, r, c, turn)
         if flips:
             print("駒を置きました")
-            flips = field.get_flips(board, r, c, turn)
             board[r][c] = turn
             
             for fr, fc in flips:
