@@ -38,3 +38,9 @@ def read_input():
 
         except ValueError:
             print("入力が不正です。もう一度入力してください")
+
+
+
+
+
+

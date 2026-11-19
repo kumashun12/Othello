@@ -79,6 +79,46 @@ def get_flips(board, r, c, color):
     return flips
 
 
+def legal_moves(board, color):
+    coordinate = []
+    for r in range(8):
+        for c in range(8):
+            if board[r][c] == EMPTY and get_flips(board, r, c, color):
+                coordinate.append((r, c))
+
+    return coordinate
+
+
+def white_count(board):
+    count = 0
+    for r in range(8):
+        for c in range(8):
+            if board[r][c] == WHITE:
+                count += 1
+
+    return count
+
+
+def black_count(board):
+    count = 0
+    for r in range(8):
+        for c in range(8):
+            if board[r][c] == BLACK:
+                count += 1
+
+    return count
+
+
+def game_result(board):
+    black_result = black_count(board)
+    white_result = white_count(board)
+    if black_result > white_result:
+        print("黒の勝ち！")
+    elif black_result < white_result:
+        print("白の勝ち！")
+    else:
+        print("引き分け") 
+
         
 
 

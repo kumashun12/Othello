@@ -23,6 +23,9 @@ turn = field.BLACK
 print("先攻は黒です")
 board = field.create_board()
 
+
+
+#ゲームメイン部分の処理
 while True:
     field.print_board(board)
     if turn == 1:
@@ -30,10 +33,24 @@ while True:
     elif turn == -1:
         print("白のターンです")
 
+    moves = field.legal_moves(board, turn)
+    if not moves:
+        if not field.legal_moves(board, -turn):
+            break
+
+        print("おける場所がないのでパスします")
+        turn *= -1
+        continue
+
+    print([(r+1, c+1) for r, c in moves])
+
     r, c = player.read_input()
     if player.piece(board, r, c, turn):
         turn *= -1
 
+
+#ゲーム終了後の処理
+field.game_result(board)
 
 
 
