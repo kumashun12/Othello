@@ -2,21 +2,11 @@
 
 import field
 import player
-import random
+import AI
+import time
 
 #ゲーム開始の流れ
 #初期配置⇒先攻（黒）と後攻（白）を決める⇒交互に駒を置いていく
-
-"""
-#AI戦の時のやつ
-human_color = random.randint(0, 1)
-if human_color == 1:
-    human_color = field.BLACK
-    print("先攻は黒です")
-else:
-    turn = field.WHITE
-    print("後攻は白です")
-"""
 
 #人間同士で対戦するときの処理（ローカル）
 turn = field.BLACK
@@ -44,10 +34,33 @@ while True:
 
     print([(r+1, c+1) for r, c in moves])
 
+    #人vs人
+    """
     r, c = player.read_input()
     if player.piece(board, r, c, turn):
         turn *= -1
+    """
 
+    #人vsAI
+    """
+    if turn == field.BLACK:
+        r, c = player.read_input()
+        time.sleep(1)
+    elif turn == field.WHITE:
+        r, c = AI.random_ai(board, turn)
+        print(f"AIは{r+1, c+1}に置きました")
+        time.sleep(3)
+
+    if player.piece(board, r, c, turn):
+        turn *= -1
+    """
+
+    #AIvsAI
+    r, c = AI.random_ai(board, turn)
+    print(f"AIは{r+1, c+1}に置きました")
+    if player.piece(board, r, c, turn):
+        turn *= -1
+    time.sleep(3)
 
 #ゲーム終了後の処理
 field.game_result(board)
