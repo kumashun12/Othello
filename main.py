@@ -53,8 +53,12 @@ while True:
 
         #貪欲法
         r, c = AI.greedy_algorithm_ai(board, turn)
+
+        #評価表AI
+        r, c = AI.evaluation_sheet_ai(board, turn)
         print(f"AIは{r+1, c+1}に置きました")
         time.sleep(3)
+
 
     if player.piece(board, r, c, turn):
         turn *= -1
@@ -65,7 +69,10 @@ while True:
     #r, c = AI.random_ai(board, turn)
 
     #貪欲法
-    r, c = AI.greedy_algorithm_ai(board, turn)
+    #r, c = AI.greedy_algorithm_ai(board, turn)
+
+    #評価表AI
+    r, c = AI.evaluation_sheet_ai(board, turn)
 
     print(f"AIは{r+1, c+1}に置きました")
     if player.piece(board, r, c, turn):
