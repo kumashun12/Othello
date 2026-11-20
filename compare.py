@@ -56,8 +56,19 @@ def repeat(func1, func2):
 
 
 black_rate, white_rate, draw_rate = repeat(AI.random_ai, AI.greedy_algorithm_ai)
-print(f"ランダム（黒）対 貪欲法（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"ランダム（黒）対 貪欲法  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.greedy_algorithm_ai, AI.random_ai)
+print(f"貪欲法  （黒）対 ランダム（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
 black_rate, white_rate, draw_rate = repeat(AI.random_ai, AI.evaluation_sheet_ai)
-print(f"ランダム（黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"ランダム（黒）対 評価表  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.evaluation_sheet_ai, AI.random_ai)
+print(f"評価表  （黒）対 ランダム（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
 black_rate, white_rate, draw_rate = repeat(AI.greedy_algorithm_ai, AI.evaluation_sheet_ai)
-print(f"貪欲法（黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"貪欲法  （黒）対 評価表  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.evaluation_sheet_ai, AI.greedy_algorithm_ai)
+print(f"評価表  （黒）対 貪欲法  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
