@@ -40,6 +40,7 @@ while True:
     r, c = player.read_input()
     if player.piece(board, r, c, turn):
         turn *= -1
+        print("駒を置きました")
     """
 
     #人vsAI
@@ -62,6 +63,7 @@ while True:
 
     if player.piece(board, r, c, turn):
         turn *= -1
+        print("駒を置きました")
     """
 
     #AIvsAI
@@ -77,6 +79,7 @@ while True:
     print(f"AIは{r+1, c+1}に置きました")
     if player.piece(board, r, c, turn):
         turn *= -1
+        print("駒を置きました")
     time.sleep(3)
 
 #ゲーム終了後の処理
