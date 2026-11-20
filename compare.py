@@ -16,6 +16,7 @@ def game_result(stage):
 def repeat(func1, func2):
     black_wins = 0
     white_wins = 0
+    draw = 0
 
     for i in range(100):
         turn = field.BLACK
@@ -50,13 +51,13 @@ def repeat(func1, func2):
 
     black_win_rate = black_wins/100
     white_win_rate = white_wins/100
+    draw_rate = draw/100
+    return black_win_rate, white_win_rate, draw_rate
 
-    return black_win_rate, white_win_rate
 
-
-black_rate, white_rate = repeat(AI.random_ai, AI.greedy_algorithm_ai)
-print(f"ランダム（黒）対 貪欲法（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}")
-black_rate, white_rate = repeat(AI.random_ai, AI.evaluation_sheet_ai)
-print(f"ランダム（黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}")
-black_rate, white_rate = repeat(AI.greedy_algorithm_ai, AI.evaluation_sheet_ai)
-print(f"貪欲法（黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}")
+black_rate, white_rate, draw_rate = repeat(AI.random_ai, AI.greedy_algorithm_ai)
+print(f"ランダム（黒）対 貪欲法（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+black_rate, white_rate, draw_rate = repeat(AI.random_ai, AI.evaluation_sheet_ai)
+print(f"ランダム（黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+black_rate, white_rate, draw_rate = repeat(AI.greedy_algorithm_ai, AI.evaluation_sheet_ai)
+print(f"貪欲法（黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
