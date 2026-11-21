@@ -24,8 +24,8 @@ def piece(board, r, c, turn):
 
 def read_input():
 
-    print("1~8の間で数字を2つ入力してください")
-    print("例：1 2")
+    print("石を置くときは「行 列」の順に入力します")
+    print("（行＝上から何番目、列＝左から何番目）例：3 4")
 
     while True:
         try:

@@ -112,6 +112,8 @@ def black_count(board):
 def game_result(board):
     black_result = black_count(board)
     white_result = white_count(board)
+    print("対戦結果")
+    print(f"黒：{black_result} 対 白：{white_result}")
     if black_result > white_result:
         print("黒の勝ち！")
     elif black_result < white_result:
