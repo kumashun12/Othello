@@ -45,6 +45,7 @@ python --version
 python main.py      # 対戦する
 python compare.py   # AI同士の勝率を比較する
 ```
+※戦わせるAIを指定するときはcompare.pyをいじってください
 
 ### うまく動かない場合
 開発中、Windowsで `python --version` を実行すると `Python` とだけ表示され、実行できないことがありました。
