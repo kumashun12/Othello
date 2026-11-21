@@ -34,6 +34,8 @@ git clone https://github.com/kumashun12/othello.git
 cd othello
 ```
 
+gitが
+
 2. Pythonのバージョンを確認します。
 ```
 python --version
@@ -47,7 +49,22 @@ python compare.py   # AI同士の勝率を比較する
 ```
 ※戦わせるAIを指定するときはcompare.pyをいじってください
 
+### PythonとGitのインストール（Windows）
+PythonとGitが入っていない場合は、次の公式サイトからインストールしてください。
+
+1. **Python**：[https://www.python.org/downloads/windows/](https://www.python.org/downloads/windows/)
+2. **Git**：[https://git-scm.com/](https://git-scm.com/)
+
+インストールしたら、**ターミナルを開き直してから**、次のコマンドでバージョンが表示されるか確認してください。
+```
+python --version
+git --version
+```
+
+※ Gitを使わない場合は、GitHubのページの「Code」→「Download ZIP」でダウンロードして、解凍したフォルダで実行することもできます。
+
 ### うまく動かない場合
+pythonまたはgitが入っていないことが考えられます。
 開発中、Windowsで `python --version` を実行すると `Python` とだけ表示され、実行できないことがありました。
 そのときは `py --version` では実行できたため、`py` で仮想環境を作り、有効にしてから `python` で実行しました。
 
