@@ -54,21 +54,64 @@ def repeat(func1, func2):
     draw_rate = draw/100
     return black_win_rate, white_win_rate, draw_rate
 
-
+"""
 black_rate, white_rate, draw_rate = repeat(AI.random_ai, AI.greedy_algorithm_ai)
-print(f"ランダム（黒）対 貪欲法  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"ランダム （黒）対 貪欲法   （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
 
 black_rate, white_rate, draw_rate = repeat(AI.greedy_algorithm_ai, AI.random_ai)
-print(f"貪欲法  （黒）対 ランダム（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"貪欲法   （黒）対 ランダム （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
 
 black_rate, white_rate, draw_rate = repeat(AI.random_ai, AI.evaluation_sheet_ai)
-print(f"ランダム（黒）対 評価表  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"ランダム （黒）対 評価表   （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
 
 black_rate, white_rate, draw_rate = repeat(AI.evaluation_sheet_ai, AI.random_ai)
-print(f"評価表  （黒）対 ランダム（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"評価表   （黒）対 ランダム （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
 
 black_rate, white_rate, draw_rate = repeat(AI.greedy_algorithm_ai, AI.evaluation_sheet_ai)
-print(f"貪欲法  （黒）対 評価表  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"貪欲法   （黒）対 評価表   （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
 
 black_rate, white_rate, draw_rate = repeat(AI.evaluation_sheet_ai, AI.greedy_algorithm_ai)
-print(f"評価表  （黒）対 貪欲法  （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+print(f"評価表   （黒）対 貪欲法   （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.two_step_ai, AI.one_step_ai)
+print(f"2手先読み（黒）対 1手先読み（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.one_step_ai, AI.two_step_ai)
+print(f"1手先読み（黒）対 2手先読み（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.two_step_ai, AI.evaluation_sheet_ai)
+print(f"2手先読み（黒）対 評価表   （白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.evaluation_sheet_ai, AI.two_step_ai)
+print(f"評価表   （黒）対 2手先読み（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.one_step_ai, AI.evaluation_sheet_ai)
+print(f"1手先読み（黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.evaluation_sheet_ai, AI.one_step_ai)
+print(f"評価表   （黒）対 1手先読み（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.two_step_evaluation_ai, AI.one_step_evaluation_ai)
+print(f"2手先読み評価（黒）対 1手先読み評価（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.one_step_evaluation_ai, AI.two_step_evaluation_ai)
+print(f"1手先読み評価（黒）対 2手先読み評価（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.two_step_evaluation_ai, AI.two_step_ai)
+print(f"2手先読み評価   （黒）対 2手先読み（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.two_step_ai, AI.two_step_evaluation_ai)
+print(f"2手先読み   （黒）対 2手先読み評価（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.one_step_evaluation_ai, AI.one_step_ai)
+print(f"1手先読み評価   （黒）対 1手先読み（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.one_step_ai, AI.one_step_evaluation_ai)
+print(f"1手先読み   （黒）対 1手先読み評価（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+"""
+
+black_rate, white_rate, draw_rate = repeat(AI.two_step_evaluation_ai, AI.evaluation_sheet_ai)
+print(f"2手先読み評価   （黒）対 評価表（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
+
+black_rate, white_rate, draw_rate = repeat(AI.evaluation_sheet_ai, AI.two_step_evaluation_ai)
+print(f"評価表   （黒）対 2手先読み評価（白）：黒の勝率{black_rate:.0%}、白の勝率{white_rate:.0%}、引き分け{draw_rate:.0%}")
