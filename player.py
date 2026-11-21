@@ -39,7 +39,13 @@ def read_input():
             print("入力が不正です。もう一度入力してください")
 
 
-
-
-
-
+def ask_number(low, high):
+    while True:
+        try:
+            n = int(input("整数を入力:"))
+            if low <= n <= high:
+                return n
+            else:
+                print(f"{low}~{high}の整数を入力してください")
+        except ValueError:
+            print(f"{low}~{high}の整数を入力してください")

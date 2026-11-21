@@ -15,47 +15,23 @@ AI_LIST = [AI.random_ai, AI.greedy_algorithm_ai, AI.evaluation_sheet_ai]
 print("対戦するモードを選んでください")
 print("1：人 vs 人,  2：人 vs AI,  3：AI vs AI")
 
-while True:
-    n = int(input())
-    if 1 <= n <= 3:
-        battle_mode = n
-        break
-    else:
-        print("1~3で選んでください")
+game_mode = player.ask_number(1, 3)
 
-if n == 2:
+if game_mode == 2:
     print("対戦するAIを選んでください")
     print("1：ランダム, 2：貪欲法, 3：評価表")
 
-    while True:
-        n = int(input())
-        if 1 <= n <= 3:
-            opponent = n
-            break
-        else:
-            print("1~3で選んでください")
+    ai_mode = player.ask_number(1, 3)
 
-elif n == 3:
+elif game_mode == 3:
     print("対戦させるAIを2つ選んでください")
     print("先攻（黒）")
     print("1：ランダム, 2：貪欲法, 3：評価表")
-    while True:
-        n = int(input())
-        if 1 <= n <= 3:
-            black_ai = AI_LIST[n-1]
-            break
-        else:
-            print("1~3で選んでください")
+    black_ai_mode = player.ask_number(1, 3)
 
     print("後攻（白）")
     print("1：ランダム, 2：貪欲法, 3：評価表")
-    while True:
-        n = int(input())
-        if 1 <= n <= 3:
-            white_ai = AI_LIST[n-1]
-            break
-        else:
-            print("1~3で選んでください")
+    white_ai_mode = player.ask_number(1, 3)
 
 turn = field.BLACK
 board = field.create_board()
@@ -83,29 +59,19 @@ while True:
     print([(r+1, c+1) for r, c in moves])
 
     #人vs人
-    if battle_mode == 1:
+    if game_mode == 1:
         r, c = player.read_input()
         if player.piece(board, r, c, turn):
             turn *= -1
             print("駒を置きました")
 
     #人vsAI
-    elif battle_mode == 2:
+    elif game_mode == 2:
         if turn == field.BLACK:
             r, c = player.read_input()
             time.sleep(1)
         elif turn == field.WHITE:
-            #ランダム
-            if opponent == 1:
-                r, c = AI.random_ai(board, turn)
-
-            #貪欲法
-            elif opponent == 2:
-                r, c = AI.greedy_algorithm_ai(board, turn)
-
-            #評価表AI
-            else:
-                r, c = AI.evaluation_sheet_ai(board, turn)
+            r, c = AI_LIST[ai_mode-1](board, turn)
             
             print(f"AIは{r+1, c+1}に置きました")
             time.sleep(3)
@@ -118,19 +84,10 @@ while True:
     #AIvsAI
     else:
         if turn == field.BLACK:
-            r, c = black_ai(board, turn)
+            r, c = AI_LIST[black_ai_mode-1](board, turn)
         elif turn == field.WHITE:
-            r, c = white_ai(board, turn)
+            r, c = AI_LIST[white_ai_mode-1](board, turn)
 
-
-        #ランダム
-        #r, c = AI.random_ai(board, turn)
-
-        #貪欲法
-        #r, c = AI.greedy_algorithm_ai(board, turn)
-
-        #評価表AI
-        #r, c = AI.evaluation_sheet_ai(board, turn)
 
         print(f"AIは{r+1, c+1}に置きました")
         if player.piece(board, r, c, turn):
