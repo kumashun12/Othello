@@ -6,7 +6,8 @@ import AI
 import time
 
 AI_LIST = [AI.random_ai, AI.greedy_algorithm_ai, AI.evaluation_sheet_ai,
-           AI.one_step_ai, AI.two_step_ai, AI.one_step_evaluation_ai, AI.two_step_evaluation_ai]
+           AI.one_step_ai, AI.two_step_ai, AI.one_step_evaluation_ai, AI.two_step_evaluation_ai,
+           AI.minimax2_ai, AI.minimax3_ai, AI.minimax4_ai]
 
 
 #ゲーム開始の流れ
@@ -22,7 +23,7 @@ players = {field.BLACK: None, field.WHITE: None}
 
 if game_mode == 2:
     print("対戦するAIを選んでください")
-    print("1：ランダム, 2：貪欲法, 3：評価表, 4：1手先読み（石の数）, 5：2手先読み（石の数）, 6：1手先読み（位置）, 7：2手先読み（位置）")
+    print("1：ランダム, 2：貪欲法, 3：評価表, 4：1手先読み（石の数）, 5：2手先読み（石の数）, 6：1手先読み（位置）, 7：2手先読み（位置）, 8：深さ2, 9：深さ3, 10：深さ4")
 
     ai_mode = player.ask_number(1, 7)
     players = {field.BLACK: None, field.WHITE: AI_LIST[ai_mode-1]}
@@ -30,11 +31,11 @@ if game_mode == 2:
 elif game_mode == 3:
     print("対戦させるAIを2つ選んでください")
     print("先攻（黒）")
-    print("1：ランダム, 2：貪欲法, 3：評価表, 4：1手先読み（石の数）, 5：2手先読み（石の数）, 6：1手先読み（位置）, 7：2手先読み（位置）")
+    print("1：ランダム, 2：貪欲法, 3：評価表, 4：1手先読み（石の数）, 5：2手先読み（石の数）, 6：1手先読み（位置）, 7：2手先読み（位置）, 8：深さ2, 9：深さ3, 10：深さ10")
     black_ai_mode = player.ask_number(1, 7)
 
     print("後攻（白）")
-    print("1：ランダム, 2：貪欲法, 3：評価表, 4：1手先読み（石の数）, 5：2手先読み（石の数）, 6：1手先読み（位置）, 7：2手先読み（位置）")
+    print("1：ランダム, 2：貪欲法, 3：評価表, 4：1手先読み（石の数）, 5：2手先読み（石の数）, 6：1手先読み（位置）, 7：2手先読み（位置）, 8：深さ2, 9：深さ3, 10：深さ4")
     white_ai_mode = player.ask_number(1, 7)
 
     players = {field.BLACK: AI_LIST[black_ai_mode-1], field.WHITE: AI_LIST[white_ai_mode-1]}

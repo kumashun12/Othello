@@ -147,7 +147,7 @@ def two_step_evaluation_ai(board, color):
     my_best_score = float('-inf')
     my_best_moves = []
     for r1, c1 in field.legal_moves(board, color):
-        my_board = apply_move(board,r1, c1, color)
+        my_board = apply_move(board, r1, c1, color)
         my_score = evaluate_weights(my_board, color)
 
         moves = field.legal_moves(my_board, -color)
@@ -171,3 +171,61 @@ def two_step_evaluation_ai(board, color):
             my_best_moves.append((r1, c1))
 
     return random.choice(my_best_moves)
+
+
+def minimax(board, depth, turn, ai_color):
+    if depth == 0:
+        return evaluate_weights(board, ai_color)
+
+    moves = field.legal_moves(board, turn)
+    if not moves:
+        if not field.legal_moves(board, -turn):
+            return evaluate_weights(board, ai_color)
+        return minimax(board, depth, -turn, ai_color)
+
+    if turn == ai_color:
+        best = float('-inf')
+    else:
+        best = float('inf')
+
+    for r, c in moves:
+        my_board = apply_move(board, r, c, turn)
+        score = minimax(my_board, depth-1, -turn, ai_color)
+        if turn == ai_color:
+            if best < score:
+                best = score
+        else:
+            if best > score:
+                best = score
+
+    return best
+                
+
+def minimax_ai(board, color, depth):
+    best_score = float('-inf')
+    best_moves = []
+    for r, c in field.legal_moves(board, color):
+        new_board = apply_move(board, r, c, color)
+        score = minimax(new_board, depth-1, -color, color)
+        if score > best_score:
+            best_score = score
+            best_moves = [(r, c)]
+        elif score == best_score:
+            best_moves.append((r, c))
+
+    return random.choice(best_moves)
+
+
+def minimax2_ai(board, color):
+    return minimax_ai(board, color, 2)
+
+
+def minimax3_ai(board, color):
+    return minimax_ai(board, color, 3)
+
+
+def minimax4_ai(board, color):
+    return minimax_ai(board, color, 4)
+
+
+
