@@ -40,8 +40,6 @@ git clone https://github.com/kumashun12/othello.git
 cd othello
 ```
 
-gitが
-
 2. Pythonのバージョンを確認します。
 ```
 python --version
